@@ -1,107 +1,132 @@
-// var arr = [
-//   [1, 2, 3],
-//   [4, 5, 6],
-//   [7, 8, 9]
-// ]
+var person = {
+  firstname: 'Ali',
+  lastname: 'Mousavi',
+  age: 32,
+  family: {
+    father: 'Mohammad',
+    mother: 'Hajar'
+  },
+  freinds: ['Ali', 'Eli', 'Qoli', 'Fati']
+}
 
-// var arr = [2, 'salam', { name: 'Ali' }, [2, 3]]
+console.log('firstname' in person)
+console.log('city' in person)
+console.log('freinds' in person)
 
-// console.log(arr)
-
-// var arr2 = arr
-
-// arr2[0] = 5
-
-// console.log(arr)
-// console.log(arr2)
-
-// var friends = ['Ali', 'Eli', 'Qoli', 'Fati']
-
-// console.log(friends.length)
-
-// console.log(friends[0])
-// console.log(friends[1])
-// console.log(friends[3])
-// console.log(friends[4])
-
-// friends[3] = 'Zari'
-
-// console.log(friends)
-
-// friends.length = 2
-
-// console.log(friends)
-// console.log(friends[3])
-
-// AB12
-// var a = { name: 'Ali' }
-
-// // CA36
-// var b = { name: 'Ali' }
-
-// console.log(a == b)
-
-// // 23AB12
-
-// var obj1 = {
-//   name: 'Ali',
-//   lastname: 'Mousavi',
-//   age: 32,
-//   gender: true,
-//   family: {
-//     father: 'Mohammad',
-//     mother: 'Hajar'
-//   }
+// for (var key in person) {
+//   console.log(key)
+//   console.log(person[key])
 // }
 
-// console.log(obj1.name)
+// for (var char of 'salam') {
+//   console.log(char)
+// }
 
-// var obj2 = obj1
+// var freinds = ['Ali', 'Eli', 'Qoli', 'Fati']
 
-// obj2.name = 'Eli'
+// for (var freind of freinds) {
+//   console.log(freind)
+// }
 
-// console.log(obj1.name)
-// console.log(obj2.name)
+// var text = ''
 
-// var propertyName = 'gender'
+// for (var i = 0; i < 10; i++) {
+//   if (i === 5) break
 
-// console.log(ali.name)
-// console.log(ali[propertyName])
-// console.log(ali.propertyName)
-// console.log(ali['family'].father)
-// console.log(ali.family['mother'])
+//   text += i
+//   //   text = text + i
+// }
 
-// var str = "My name is \uD83D\uDE00 ali"
+// console.log(text)
 
-// console.log(str)
+// console.log('Start')
+// var i = 0
+// for (;;) {
+//   //   if (i % 2) continue
 
-// var number
-// number = 12
-// console.log(number)
+//   if (i >= 10) break
 
-// var firstName = 'Ali',
-//   lastName = 'Mousavi'
+//   console.log(i)
+//   i++
+// }
 
-// var نام = 'علی'
+// console.log('End')
 
-/*
-var a = 3
-var b = a + 5
+// var i = 0
 
-// log to console
+// do {
+//   console.log(i)
+//   i++
+// } while (i < 5)
 
-console.table({ b })
-console.log(b)
+// var freinds = ['Ali', 'Eli', 'Qoli', 'Fati']
 
-*/
+// for (var i = 0; i < freinds.length; i++) {
+//   console.log(freinds[i])
+// }
 
-/*
-1 => 0 1
-2 => 00  01 10 11
-3 => 000 001 010 011 100 101 110 111
-4 => 15
+// for (var i = 10; i < 20; i = i + 2) {
+//   console.log('salam', i)
+// }
 
-2 ** n - 1
+// var a = 10
 
+// a % 2 ? console.log('Odd') : console.log('Even')
 
-*/
+// console.log(a % 2 ? 'Odd' : 'Even')
+
+// var char = 'C'
+
+// switch (char) {
+//   case 'A':
+//   case 'a':
+//     console.log('Char is A')
+//     break
+
+//   case 'B':
+//     console.log('Char is B')
+//     break
+
+//   default:
+//     console.log('Char is not A or B')
+// }
+
+// var a = 11
+
+// if (a % 2) {
+//   console.log('A is odd')
+// } else {
+//   console.log('A is even')
+// }
+
+// var a = 0
+
+// if (a > 0) {
+//   console.log('A is positive')
+// } else if (a < 0) {
+//   console.log('A is negative')
+// } else {
+//   console.log('A is zero')
+// }
+
+// var a = 10
+
+// if (a === 10) {
+//   console.log('A is 10')
+// } else {
+//   console.log('A is not 10')
+// }
+
+// ~ tilda ! @ # $ % ^ & ampersand *  () ` ' " : ; . , ? / \ | pipe = - _ [] {} <>
+
+// 0 & 0 => 0
+// 0 & 1 => 0
+// 1 & 0 => 0
+// 1 & 1 => 1
+
+// 0 | 0 => 0
+// 0 | 1 => 1
+// 1 | 0 => 1
+// 1 | 1 => 1
+
+// console.log('b' + 'a' + +'a' + 'a')
