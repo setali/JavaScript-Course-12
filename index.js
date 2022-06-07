@@ -1,132 +1,249 @@
-var person = {
-  firstname: 'Ali',
-  lastname: 'Mousavi',
-  age: 32,
-  family: {
-    father: 'Mohammad',
-    mother: 'Hajar'
-  },
-  freinds: ['Ali', 'Eli', 'Qoli', 'Fati']
+function func () {
+  var i // AB24
+  for (i = 0; i < 5; i++) {
+    function func (j) {
+      setTimeout(function () {
+        console.log(j)
+      }, 1000)
+    }
+
+    func(i)
+  }
 }
 
-console.log('firstname' in person)
-console.log('city' in person)
-console.log('freinds' in person)
+func()
+// console.log(1)
 
-// for (var key in person) {
-//   console.log(key)
-//   console.log(person[key])
+// var intervalId = setInterval(function () {
+//   console.log('Ali')
+// }, 1000)
+
+// setTimeout(() => {
+//   clearInterval(intervalId)
+// }, 5000)
+
+// console.log(2)
+
+// console.log(1)
+
+// setTimeout(function () {
+//   console.log('salam')
+// }, 1000)
+
+// console.log(2)
+
+// setTimeout(function () {
+//   console.log('ali')
+// }, 2000)
+
+// console.log(3)
+
+// function func (a) {
+//   return function (b) {
+//     return function (c) {
+//       return a + b + c
+//     }
+//   }
 // }
 
-// for (var char of 'salam') {
-//   console.log(char)
+// console.log(func(2)(5)(8))
+
+// var sum20 = func(20)
+
+// console.log(sum20(5)(7))
+// console.log(sum20(10)(7))
+
+// var sum30 = sum20(10)
+// console.log(sum30(5))
+// console.log(sum30(8))
+
+// var myCounter = (function () {
+//   var counter = 0
+
+//   function increase () {
+//     counter++
+//     console.log(counter)
+//   }
+
+//   function decrease () {
+//     counter--
+//     console.log(counter)
+//   }
+
+//   return {
+//     increase,
+//     decrease
+//   }
+// })()
+
+// var myCounter = counterWrapper()
+// console.log(myCounter)
+// var myCounter2 = counterWrapper()
+// console.log(myCounter2)
+
+// var number
+// console.log(number)
+
+// function func () {
+//   var number // Hoisting
+//   console.log(number)
+//   number = 20
+// }
+// func()
+
+// function func () {
+//   console.log(number)
+//   var number = 20
+//   console.log(number)
 // }
 
-// var freinds = ['Ali', 'Eli', 'Qoli', 'Fati']
+// function func () {
+//   if (true) {
+//     var x = 20
+//   }
 
-// for (var freind of freinds) {
-//   console.log(freind)
+//   console.log(x)
+// }
+// func()
+
+// function func () {
+//   var a = 10
+//   console.log(a)
+//   function func2 () {
+//     var a = 20
+//     console.log(a)
+//   }
+//   func2()
+//   console.log(a)
 // }
 
-// var text = ''
+// func()
+
+// // var ali = 'mousavi'
+// // window.ali = 'mousavi'
+
+// function func () {
+//   var a = 5
+//   console.log(a)
+//   // console.log(ali)
+
+//   function func2 () {
+//     // window.ali = 'Mousavi'
+//     ali = 'Mousavi'
+//     var b = 10
+//     console.log(b)
+//     console.log(a)
+//     a = 20
+//     console.log(ali)
+//     console.log(window.ali)
+//   }
+
+//   func2()
+
+//   console.log(a)
+// }
+
+// func()
+
+// console.log(ali)
+
+// function factorial (n) {
+//   return n === 1 ? 1 : n * factorial(n - 1)
+// }
+
+// function factorial (n) {
+//   var result = n
+
+//   for (var i = n - 1; i > 1; i--) {
+//     result *= i
+//   }
+
+//   return result
+// }
+
+// console.log(factorial(3))
+
+// 5! => 5 * 4!
+// 4! => 4 * 3!
+// 3! => 3 * 2!
+// 2! => 2 * 1!
+// 1! => 1
+
+// function sum (a, b) {
+//   return a + b
+// }
+
+// function sub (a, b) {
+//   return a - b
+// }
+
+// function noop () {}
+
+// function operate (a, b, cb = noop) {
+//   console.log(cb)
+//   return cb(a, b)
+// }
+
+// console.log(operate(4, 3, sum))
+// // console.log(operate(4, 3, sub))
+
+// var result = operate(4, 3, function (a, b) {
+//   return a * b
+// })
+
+// operate(4, 3)
+
+// console.log(result)
+
+// var result = sum(2, 5)
+// console.log(result)
+// console.log(sub(10, 5))
 
 // for (var i = 0; i < 10; i++) {
-//   if (i === 5) break
-
-//   text += i
-//   //   text = text + i
-// }
-
-// console.log(text)
-
-// console.log('Start')
-// var i = 0
-// for (;;) {
-//   //   if (i % 2) continue
-
-//   if (i >= 10) break
-
+//   if (i % 2 === 0) {
+//     continue
+//   }
 //   console.log(i)
-//   i++
 // }
 
-// console.log('End')
+// console.log(12 % 2)
 
-// var i = 0
-
-// do {
-//   console.log(i)
-//   i++
-// } while (i < 5)
-
-// var freinds = ['Ali', 'Eli', 'Qoli', 'Fati']
-
-// for (var i = 0; i < freinds.length; i++) {
-//   console.log(freinds[i])
+// var sum = function (a, b) {
+//   return a + b
 // }
 
-// for (var i = 10; i < 20; i = i + 2) {
-//   console.log('salam', i)
+// console.log(sum(2, 4))
+
+// function sum (a = 0, b = 0, c = 0, d = 5) {
+// function sum (a = 0, b = 0, c = 0, d = 5) {
+//   var result = 0
+
+//   for (var i = 0; i < arguments.length; i++) {
+//     result = result + arguments[i]
+//   }
+
+//   return result
+
+//   // if (c === undefined) {
+//   //   c = 0
+//   // }
+
+//   // c = c === undefined ? 0 : c
+
+//   // c = c || 0
+
+//   // var result = a + b + c + d
+
+//   // return result
+// }
+// console.log(sum(2, 5, 3, 9))
+// console.log(sum(2, 5, 7))
+// console.log(sum(2, 5))
+// console.log(sum(2))
+// console.log(sum())
+
+// function saySalam () {
+//   console.log('salam')
 // }
 
-// var a = 10
-
-// a % 2 ? console.log('Odd') : console.log('Even')
-
-// console.log(a % 2 ? 'Odd' : 'Even')
-
-// var char = 'C'
-
-// switch (char) {
-//   case 'A':
-//   case 'a':
-//     console.log('Char is A')
-//     break
-
-//   case 'B':
-//     console.log('Char is B')
-//     break
-
-//   default:
-//     console.log('Char is not A or B')
-// }
-
-// var a = 11
-
-// if (a % 2) {
-//   console.log('A is odd')
-// } else {
-//   console.log('A is even')
-// }
-
-// var a = 0
-
-// if (a > 0) {
-//   console.log('A is positive')
-// } else if (a < 0) {
-//   console.log('A is negative')
-// } else {
-//   console.log('A is zero')
-// }
-
-// var a = 10
-
-// if (a === 10) {
-//   console.log('A is 10')
-// } else {
-//   console.log('A is not 10')
-// }
-
-// ~ tilda ! @ # $ % ^ & ampersand *  () ` ' " : ; . , ? / \ | pipe = - _ [] {} <>
-
-// 0 & 0 => 0
-// 0 & 1 => 0
-// 1 & 0 => 0
-// 1 & 1 => 1
-
-// 0 | 0 => 0
-// 0 | 1 => 1
-// 1 | 0 => 1
-// 1 | 1 => 1
-
-// console.log('b' + 'a' + +'a' + 'a')
+// console.log(saySalam)
