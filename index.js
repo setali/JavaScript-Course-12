@@ -1,249 +1,201 @@
-function func () {
-  var i // AB24
-  for (i = 0; i < 5; i++) {
-    function func (j) {
-      setTimeout(function () {
-        console.log(j)
-      }, 1000)
-    }
+// var person = {
+//   firstName: 'Ali',
+//   lastName: 'Mousavi',
+//   age: 32,
+//   gender: true,
+//   family: {
+//     father: 'Mohammad',
+//     mother: 'Hajar'
+//   },
+//   education: undefined
+// }
 
-    func(i)
+// var jsonPerson = JSON.stringify(person)
+
+// console.log(person)
+// console.log(jsonPerson)
+
+// var newPerson = JSON.parse(jsonPerson)
+
+// console.log(newPerson)
+
+// console.log(newPerson === person)
+
+// JSON => JavaScript Object Notation
+// JavaScript
+// Java Script
+
+var obj1 = {
+  a: 10,
+  // AE12CB
+  b: {
+    c: 40
   }
 }
 
-func()
-// console.log(1)
+// var obj3 = {
+//   a: 40,
+//   b: 50
+// }
 
-// var intervalId = setInterval(function () {
-//   console.log('Ali')
-// }, 1000)
+// var obj2 = obj1
 
-// setTimeout(() => {
-//   clearInterval(intervalId)
-// }, 5000)
+// var obj2 = {}
+// Object.assign(obj2, obj3, obj1)
 
-// console.log(2)
+// var obj2 = Object.assign({}, obj1)
+var obj2 = JSON.parse(JSON.stringify(obj1))
 
-// console.log(1)
+obj2.a = 20
+obj2.b.c = 100
 
-// setTimeout(function () {
-//   console.log('salam')
-// }, 1000)
+console.log(obj2.b === obj1.b)
 
-// console.log(2)
+console.log(obj1)
+console.log(obj2)
+console.log(obj1 === obj2)
 
-// setTimeout(function () {
-//   console.log('ali')
-// }, 2000)
+// var obj = {}
 
-// console.log(3)
+// var numbers = [1, 8, 3, 19, 24, 6, 2]
+// var result = Math.max.apply({}, numbers)
 
-// function func (a) {
-//   return function (b) {
-//     return function (c) {
-//       return a + b + c
+// console.log(result)
+
+// var firstName = 'Ali'
+// var lastName = 'Mousavi'
+
+// function welcome (greeting) {
+//   // console.log(this)
+//   console.log(greeting + ' ' + this.firstName + ' ' + this.lastName)
+// }
+
+// welcome('Hello')
+
+// var mohaddese = {
+//   firstName: 'Mohaddese',
+//   lastName: 'Talebi'
+// }
+
+// welcome.call(mohaddese, 'Hi')
+
+// var parisa = {
+//   firstName: 'Parisa',
+//   lastName: 'Ahmadi'
+// }
+
+// welcome.apply(parisa, ['Salam'])
+
+// var pegah = {
+//   firstName: 'Pegah',
+//   lastName: 'Shahbazi'
+// }
+
+// var newWelcome = welcome.bind(pegah, 'Hello')
+// newWelcome.call(parisa)
+
+// var firstName = 'Ali'
+// var lastName = 'Mousavi'
+
+// var sara = {
+//   firstName: 'Sara',
+//   lastName: 'Motamedi',
+//   getFullName: function () {
+//     console.log(this.firstName + ' ' + this.lastName)
+//   }
+// }
+
+// var sofia = {
+//   firstName: 'Sofia',
+//   lastName: 'Ahanj',
+//   getFullName: sara.getFullName
+// }
+
+// var getFullName = sofia.getFullName
+
+// sofia.getFullName()
+// sara.getFullName()
+
+// getFullName()
+
+// var firstName = 'Ali',
+//   lastName = 'Mousavi'
+
+// function Person (name, family) {
+//   this.firstName = name
+//   this.lastName = family
+
+//   this.getFullName = function () {
+//     console.log(this)
+//     return this.firstName + ' ' + this.lastName
+//   }
+// }
+
+// var obj = new Person('Reza', 'Derakhshan')
+// console.log(obj)
+// console.log(obj.getFullName())
+
+// var firstName = 'Ali'
+// var lastName = 'Mousavi'
+// function getFullName () {
+//   console.log(this === window)
+//   return this.firstName + ' ' + this.lastName
+// }
+
+// getFullName()
+
+// var ali = {
+//   firstName: 'Ali',
+//   lastName: 'Mousavi',
+//   getFullName: function () {
+//     console.log(this === ali)
+//     return this.firstName + ' ' + this.lastName
+//   },
+//   family: {
+//     mother: 'Hajar',
+//     father: 'Mohammad',
+//     func: function () {
+//       console.log(this)
 //     }
 //   }
 // }
 
-// console.log(func(2)(5)(8))
+// console.log(ali.getFullName())
 
-// var sum20 = func(20)
+// ali.family.func()
 
-// console.log(sum20(5)(7))
-// console.log(sum20(10)(7))
+// function Person (name, family, age) {
+//   this.name = name
+//   this.family = family
+//   this.age = age
 
-// var sum30 = sum20(10)
-// console.log(sum30(5))
-// console.log(sum30(8))
-
-// var myCounter = (function () {
-//   var counter = 0
-
-//   function increase () {
-//     counter++
-//     console.log(counter)
+//   this.getFullName = function () {
+//     return this.name + ' ' + this.family
 //   }
-
-//   function decrease () {
-//     counter--
-//     console.log(counter)
-//   }
-
-//   return {
-//     increase,
-//     decrease
-//   }
-// })()
-
-// var myCounter = counterWrapper()
-// console.log(myCounter)
-// var myCounter2 = counterWrapper()
-// console.log(myCounter2)
-
-// var number
-// console.log(number)
-
-// function func () {
-//   var number // Hoisting
-//   console.log(number)
-//   number = 20
-// }
-// func()
-
-// function func () {
-//   console.log(number)
-//   var number = 20
-//   console.log(number)
 // }
 
-// function func () {
-//   if (true) {
-//     var x = 20
-//   }
-
-//   console.log(x)
-// }
-// func()
-
-// function func () {
-//   var a = 10
-//   console.log(a)
-//   function func2 () {
-//     var a = 20
-//     console.log(a)
-//   }
-//   func2()
-//   console.log(a)
-// }
-
-// func()
-
-// // var ali = 'mousavi'
-// // window.ali = 'mousavi'
-
-// function func () {
-//   var a = 5
-//   console.log(a)
-//   // console.log(ali)
-
-//   function func2 () {
-//     // window.ali = 'Mousavi'
-//     ali = 'Mousavi'
-//     var b = 10
-//     console.log(b)
-//     console.log(a)
-//     a = 20
-//     console.log(ali)
-//     console.log(window.ali)
-//   }
-
-//   func2()
-
-//   console.log(a)
-// }
-
-// func()
+// var ali = new Person('Ali', 'Mousavi', 32)
 
 // console.log(ali)
+// console.log(ali.getFullName())
 
-// function factorial (n) {
-//   return n === 1 ? 1 : n * factorial(n - 1)
+// var reza = new Person('Reza', 'Derakhshan', 22)
+
+// console.log(reza)
+// console.log(reza.getFullName())
+
+// console.log(ali instanceof Person)
+// console.log(reza instanceof Person)
+// console.log('salam' instanceof Person)
+
+// var ali = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   age: 32
 // }
 
-// function factorial (n) {
-//   var result = n
-
-//   for (var i = n - 1; i > 1; i--) {
-//     result *= i
-//   }
-
-//   return result
+// var reza = {
+//   name: 'Reza',
+//   family: 'Derakhshan',
+//   age: 22
 // }
-
-// console.log(factorial(3))
-
-// 5! => 5 * 4!
-// 4! => 4 * 3!
-// 3! => 3 * 2!
-// 2! => 2 * 1!
-// 1! => 1
-
-// function sum (a, b) {
-//   return a + b
-// }
-
-// function sub (a, b) {
-//   return a - b
-// }
-
-// function noop () {}
-
-// function operate (a, b, cb = noop) {
-//   console.log(cb)
-//   return cb(a, b)
-// }
-
-// console.log(operate(4, 3, sum))
-// // console.log(operate(4, 3, sub))
-
-// var result = operate(4, 3, function (a, b) {
-//   return a * b
-// })
-
-// operate(4, 3)
-
-// console.log(result)
-
-// var result = sum(2, 5)
-// console.log(result)
-// console.log(sub(10, 5))
-
-// for (var i = 0; i < 10; i++) {
-//   if (i % 2 === 0) {
-//     continue
-//   }
-//   console.log(i)
-// }
-
-// console.log(12 % 2)
-
-// var sum = function (a, b) {
-//   return a + b
-// }
-
-// console.log(sum(2, 4))
-
-// function sum (a = 0, b = 0, c = 0, d = 5) {
-// function sum (a = 0, b = 0, c = 0, d = 5) {
-//   var result = 0
-
-//   for (var i = 0; i < arguments.length; i++) {
-//     result = result + arguments[i]
-//   }
-
-//   return result
-
-//   // if (c === undefined) {
-//   //   c = 0
-//   // }
-
-//   // c = c === undefined ? 0 : c
-
-//   // c = c || 0
-
-//   // var result = a + b + c + d
-
-//   // return result
-// }
-// console.log(sum(2, 5, 3, 9))
-// console.log(sum(2, 5, 7))
-// console.log(sum(2, 5))
-// console.log(sum(2))
-// console.log(sum())
-
-// function saySalam () {
-//   console.log('salam')
-// }
-
-// console.log(saySalam)
