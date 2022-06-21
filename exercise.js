@@ -1,25 +1,76 @@
+var circ = { name: 'Ali' }
+circ.circ = circ
+
+var cache = []
+var result = JSON.stringify(circ, (key, value) => {
+  if (typeof value === 'object' && value !== null) {
+    // Duplicate reference found, discard key
+    if (cache.includes(value)) return
+
+    // Store value in our collection
+    cache.push(value)
+  }
+  return value
+})
+
+console.log(cache)
+cache = null
+
+console.log(result)
+// 2 ^ 5 => 2 * 2 * 2 * 2 * 2
+// 2 ^ 4 => 2 * 2 * 2 * 2
+// 2 ^ 3 => 2 * 2 * 2
+// 2 ^ 2 => 2 * 2
+// 2 ^ 1 => 2
+
+// 2 ^ 5 => 2 * 2^4
+// 2 ^ 4 => 2 * 2^3
+// 2 ^ 3 => 2 * 2^2
+// 2 ^ 2 => 2 * 2^1
+// 2 ^ 1 => 2
+
+// function power (a, b) {
+//   return b === 1n ? a : a * power(a, b - 1n)
+// }
+
+function power (a, b) {
+  var result = a
+
+  for (var i = 1n; i < b; i++) {
+    // console.log(i)
+    result *= a
+  }
+
+  return result
+}
+
+// console.time('power')
+
+// console.log(power(99999n, 99n))
+
+// console.timeEnd('power')
 //////////////////////// 12
 
-var number = 13
+// var number = 13
 
-if (number % 2) {
-  console.log('Odd')
-} else {
-  console.log('even')
-}
+// if (number % 2) {
+//   console.log('Odd')
+// } else {
+//   console.log('even')
+// }
 
-number % 2 ? console.log('Odd') : console.log('Even')
-console.log(number % 2 ? 'Odd' : 'Even')
+// number % 2 ? console.log('Odd') : console.log('Even')
+// console.log(number % 2 ? 'Odd' : 'Even')
 
-switch (number % 2) {
-  case 1:
-    console.log('Odd')
-    break
+// switch (number % 2) {
+//   case 1:
+//     console.log('Odd')
+//     break
 
-  case 0:
-    console.log('Even')
-    break
-}
+//   case 0:
+//     console.log('Even')
+//     break
+// }
 
 //////////////////////// 9
 
