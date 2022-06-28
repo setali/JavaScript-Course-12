@@ -11,39 +11,5 @@
     <h2>
       JavaScript Course
     </h2>
-    <div id="my-div" style="background-color: green;">
-      <span>Ali</span>
-      <span>Eli</span>
-      <span>Qoli</span>
-    </div>
-
-    <script>
-      var element = document.querySelector('#my-div')
-
-      function handleClick (event) {
-        console.log('Clicked!')
-        console.log(event.type)
-        console.log(event.target)
-        console.log(event.target === element)
-        console.log(event.timeStamp)
-      }
-
-      element.addEventListener('click', handleClick)
-
-      setTimeout(function () {
-        element.removeEventListener('click', handleClick)
-      }, 3000)
-
-      // element.addEventListener('click', function () {
-      //   console.log('Another Clicked!')
-      // })
-      // function handleClick () {
-      //   console.log('Clicked!')
-      // }
-
-      // function handleMouseOver () {
-      //   console.log('Mouse over')
-      // }
-    </script>
   </body>
 </html>

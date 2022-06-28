@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XHR</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button onclick="getData()">Get Data</button>
+
+    <div id="data"></div>
+
+    <script>
+      var input = document.querySelector('input')
+      var dataElement = document.querySelector('div')
+
+      function getData () {
+        var value = input.value
+        if (!value) {
+          return
+        }
+
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users/' + value)
+        // xhr.open('GET', 'http://localhost:3000/users/1')
+        xhr.send()
+
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.response)
+            dataElement.textContent = data.name
+          }
+        }
+
+        xhr.onerror = function () {
+          console.error('There is an error')
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capturing Bubbling</title>
+  </head>
+  <body>
+    <div style="background-color: green;">
+      <span>
+        <a href="#">
+          Click me
+        </a>
+      </span>
+    </div>
+
+    <script>
+      var elements = document.querySelectorAll('*')
+
+      function setEvent (element) {
+        // element.addEventListener('click', function (event) {
+        //   console.log("Bubbling", element.tagName)
+        // })
+
+        element.addEventListener(
+          'click',
+          function (event) {
+            console.log('Capturing', element.tagName)
+          },
+          true
+        )
+      }
+
+      for (var element of elements) {
+        setEvent(element)
+      }
+    </script>
+  </body>
+</html>
