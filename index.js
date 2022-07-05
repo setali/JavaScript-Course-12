@@ -1,287 +1,147 @@
-let a = 1,
-  b = 3
+function request (url, method = 'GET') {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open(method, url)
+    xhr.send()
 
-// let tmp = a
+    xhr.onload = function () {
+      if (xhr.status >= 400) {
+        reject(new Error('Error not found'))
+      } else {
+        resolve({
+          status: xhr.status,
+          response: xhr.response,
+          json: () => {
+            return new Promise((resolve, reject) => {
+              try {
+                resolve(JSON.parse(xhr.response))
+              } catch (err) {
+                reject(err)
+              }
+            })
+          }
+        })
+      }
+    }
 
-// a = b
-// b = tmp
+    xhr.onerror = function () {
+      reject(new Error('Error'))
+    }
+  })
+}
 
-// a = a ^ b
-// b = a ^ b
-// a = a ^ b
+const url = 'https://jsonplaceholder.typicode.com/users/1'
 
-;[b, a] = [a, b]
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err))
+  .finally(() => console.log('Finally'))
 
-console.log(a, b)
+// function request (url, method, cb) {
+//   const xhr = new XMLHttpRequest()
+//   xhr.open(method, url)
+//   xhr.send()
 
-// const arr = [2]
-
-// const [first, second = 20, ...other] = arr
-
-// console.log(first, second)
-// console.log(other)
-
-// function MyComponent ({name,  products: myProducts}) {
-
-// }
-
-// MyComponent({name: "Ali", products: []})
-
-// const obj = {
-//   //   firstName: 'Ali',
-//   lastName: 'Mousavi',
-//   age: 33,
-//   gender: true,
-//   family: {
-//     father: 'Mohammad',
-//     mother: 'Hajar'
-//     // brother: 'Naqi'
-//   }
-// }
-
-// const {
-//   firstName: myName = 'Hasan',
-//   lastName,
-//   family,
-//   family: { father: myFather, mother, brother = 'Qoli' },
-//   ...otherObj
-// } = obj
-
-// console.log(family)
-// const {
-//   family: { father: myFather, mother, brother = 'Qoli' }
-// } = obj
-
-// console.log(myFather, mother, brother)
-
-// const myName = obj.firstName
-// const lastName = obj.lastName
-
-// console.log(myName, lastName)
-// console.log(otherObj)
-// console.log(father, mother)
-
-// const sum = (...args) => args.reduce((acc, el) => acc + el)
-// const sum = (a, b, ...args) => console.log(a, b, args)
-
-// console.log(sum(1, 2, 3))
-// console.log(sum(1, 2))
-// console.log(sum(1, 2, 3, 4))
-// console.log(sum(1, 2, 3, 4, 5))
-
-// const obj = { name: 'Ali', age: 33 }
-
-// const arr = [...obj] // Error
-
-// const arr = [1, 2, 3]
-
-// const obj = { ...arr }
-
-// console.log(obj)
-
-// const obj = { name: 'Ali', family: 'Mousavi' }
-
-// // const obj2 = Object.assign({}, obj)
-
-// const obj2 = { ...obj }
-
-// console.log(obj2)
-
-// const obj = {
-//   age: 33,
-//   gender: true
-// }
-
-// const obj3 = {
-//   name: 'Hasan'
-// }
-
-// const obj2 = {
-//   ...obj3,
-//   name: 'Ali',
-//   family: 'Mousavi',
-//   ...obj
-// }
-
-// console.log(obj2)
-
-// const arr = [4, 5, 6]
-
-// const arr2 = [1, 2, 3, ...arr, 7, 8]
-
-// console.log(arr2)
-
-// const numbers = [2, 9, 1, 44, 3, 72, 1, 3]
-
-// // const result = Math.max.apply(null, numbers)
-// const result = Math.max(...numbers)
-
-// console.log(result)
-
-// function func () {
-//   //   console.log('This', this)
-
-//   return {
-//     a: 20,
-//     normalFn: function () {
-//       console.log(this)
-//     },
-//     arrowFn: () => {
-//       console.log(this)
+//   xhr.onload = function () {
+//     if (xhr.status >= 400) {
+//       cb('Error not found')
+//     } else {
+//       cb(null, xhr.response)
 //     }
 //   }
-// }
 
-// const ali = {
-//   name: 'Ali',
-//   family: 'Mousavi'
-// }
-
-// const obj = func.call(ali)
-// // const obj = func()
-
-// const qoli = {
-//   name: 'Qoli',
-//   normal: obj.normalFn,
-//   arrow: obj.arrowFn
-// }
-
-// qoli.normal()
-// qoli.arrow()
-
-// obj.normalFn()
-// obj.arrowFn()
-
-// const Person = () => {
-//   // Error
-//   console.log(arguments) // Error
-//   this.name = 'Ali'
-// }
-
-// // const a = new Person()
-
-// Person()
-
-// const persons = [
-//   { name: 'Ali', gender: 'male', age: 33 },
-//   { name: 'Mohadese', gender: 'female', age: 29 },
-//   { name: 'Parisa', gender: 'female', age: 31 },
-//   { name: 'Sara', gender: 'female', age: 25 },
-//   { name: 'Simin', gender: 'female', age: 25 },
-//   { name: 'Sofia', gender: 'female', age: 30 }
-// ]
-
-// const over30 = persons.filter(el => el.age > 30)
-
-// const females = persons.filter(el => el.gender === 'female')
-
-// const avg = persons.reduce((acc, el) => acc + el.age, 0) / persons.length
-
-// console.log(avg)
-
-// console.log(over30)
-// console.log(females)
-
-// const pow2 = a => a ** 2
-
-// console.log(pow2(5))
-
-// const sum = (a, b) => a + b
-
-// console.log(sum(2, 3))
-
-// const name = 'Ali',
-//   age = 33
-// // const str = "Hello\nI'm " + name
-
-// // back tick
-// const str = `Hello I'm ${name}, I have ${(function getAge () {
-//   const age = 20
-//   return age
-// })()} years old`
-
-// console.log(str)
-
-// function func () {
-//   for (const i = 0; i < 5; i++) {
-//     setTimeout(function () {
-//       console.log(i)
-//     }, 1000)
+//   xhr.onerror = function () {
+//     cb('Error')
 //   }
 // }
 
-// func()
+// const url = 'https://jsonplaceholder.typicode.com/users/1'
 
-// const arr = [1, 2, 3]
+// request(url, 'GET', (error, data) => {
+//   if (error) {
+//     console.error(error)
+//   } else {
+//     console.log(data)
+//   }
+// })
 
-// arr[0] = 5
-// // arr = [5, 6] // Error
-
-// console.log(arr)
-
-// const obj = {
-//   name: 'Ali'
+// function prom (time, greeting) {
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(greeting), time * 1000)
+//   })
 // }
 
-// obj.name = 'Hasan'
+// prom(1, 'Hello').then(result => console.log(result, 'Qoli'))
+// prom(2, 'Hi').then(result => console.log(result, 'Ali'))
+// prom(3, 'Hey').then(result => console.log(result, 'Hasan'))
 
-// // obj = { name: 'Hasan' } // Error
+// const prom2 = new Promise(resolve => {
+//   setTimeout(() => resolve(), 2000)
+// })
 
-// console.log(obj)
+// prom2.then(() => console.log('salam'))
+// prom2.then(() => console.log('ali'))
 
-// const a = 10
+// function slider (slides) {
+//   if (!Array.isArray(slides)) {
+//     const error = new Error('Slides must be an array')
 
-// a = 20
-
-// console.log(a)
-
-// let a = 1,
-//   b = 5,
-//   c = 10
-
-// function func () {
-//   let a = 5
-
-//   {
-//     var a = 10
+//     // console.log(error.name)
+//     // console.log(error.message)
+//     // console.log(error.stack)
+//     throw error
 //   }
 
-//   console.log(a)
+//   console.log('Start sliding')
+//   // ....
 // }
 
-// func()
+// const prom1 = new Promise((resolve, reject) => {
+//   reject()
+//   setTimeout(() => resolve('Salam'), 1000)
+// })
 
-// function func () {
-//   var a = 5
+// prom1.then(() => {}).catch(() => {})
 
-//   //   let b = 5
+// console.log(1)
 
-//   {
-//     // let b = 10
+// setTimeout(() => {
+//   console.log(2 * 3)
+// }, 0)
 
-//     {
-//       //   let b = 20
-//       console.log(b)
+// const prom = new Promise(resolve => {
+//   resolve(2 * 4)
+// })
 
-//       {
-//         let b = 15
-//       }
+// prom.then(result => console.log(result))
 
-//       var a = 50
-//     }
+// console.log(2)
 
-//     // console.log(b)
-//   }
+// const promAfter2 = new Promise(resolve => {
+//   setTimeout(() => {
+//     resolve()
+//   }, 2000)
+// })
 
-//   //   console.log(a)
-// }
+// console.log(1)
+// promAfter2.then(() => console.log('salam'))
+// console.log(2)
+// promAfter2.then(() => console.log('ali'))
+// console.log(3)
 
-// func()
+// const prom = new Promise((resolve, reject) => {
+//   console.log('salam')
+//   setTimeout(() => {
+//     // resolve()
+//     reject()
+//   }, 2000)
+// })
 
-// function func1 () {
-
-//   function func2 () {
-//     // var a = 10
-//     console.log(a)
-//   }
-// }
+// prom
+//   .then(() => {
+//     console.log('Then')
+//   })
+//   .catch(() => {
+//     console.log('Catch')
+//   })
