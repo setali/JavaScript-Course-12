@@ -1,147 +1,114 @@
-function request (url, method = 'GET') {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
-    xhr.open(method, url)
-    xhr.send()
-
-    xhr.onload = function () {
-      if (xhr.status >= 400) {
-        reject(new Error('Error not found'))
-      } else {
-        resolve({
-          status: xhr.status,
-          response: xhr.response,
-          json: () => {
-            return new Promise((resolve, reject) => {
-              try {
-                resolve(JSON.parse(xhr.response))
-              } catch (err) {
-                reject(err)
-              }
-            })
-          }
-        })
-      }
-    }
-
-    xhr.onerror = function () {
-      reject(new Error('Error'))
-    }
-  })
+const person = {
+  firstName: 'Ali'
+  // family: {
+  //   // father: {
+  //   //   // name: 'Mohammad'
+  //   // }
+  // }
+  // getFullName () {
+  //   return 'Ali Mousavi'
+  // }
 }
 
-const url = 'https://jsonplaceholder.typicode.com/users/1'
+console.log(person.family?.father?.name) // Optional chaining
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(err => console.log(err))
-  .finally(() => console.log('Finally'))
+console.log(person.getFullName?.())
 
-// function request (url, method, cb) {
-//   const xhr = new XMLHttpRequest()
-//   xhr.open(method, url)
-//   xhr.send()
+// console.log(NaN ?? 'salam') // Nullish
 
-//   xhr.onload = function () {
-//     if (xhr.status >= 400) {
-//       cb('Error not found')
-//     } else {
-//       cb(null, xhr.response)
-//     }
+// const data = {
+//   name: NaN
+// }
+
+// const firstName = data.name ?? 'Anonymous'
+
+// console.log(firstName)
+
+// function Person (name, family) {
+//   this.name = name
+//   this.family = family
+
+//   this.getFullName = () => `${this.name} ${this.family}`
+// }
+
+// class Person {
+//   country = 'Iran'
+
+//   constructor (name, family) {
+//     this.name = name
+//     this.family = family
 //   }
 
-//   xhr.onerror = function () {
-//     cb('Error')
-//   }
+//   getFullName = () => `${this.name} ${this.family}`
+// }
+
+// const ali = new Person('Ali', 'Mousavi')
+
+// console.log(ali)
+// console.log(ali.getFullName())
+
+// console.log(ali instanceof Person)
+
+// new Person()
+
+// class Person {}
+
+// async function request (url, options = {}) {
+//   const response = await fetch(url, options)
+//   return await response.json()
 // }
 
 // const url = 'https://jsonplaceholder.typicode.com/users/1'
 
-// request(url, 'GET', (error, data) => {
-//   if (error) {
-//     console.error(error)
-//   } else {
-//     console.log(data)
-//   }
-// })
+// request(url)
+//   .then(console.log)
+//   .catch(console.log)
 
-// function prom (time, greeting) {
+// function delay (time, value) {
 //   return new Promise(resolve => {
-//     setTimeout(() => resolve(greeting), time * 1000)
+//     setTimeout(() => {
+//       resolve(value)
+//     }, time * 1000)
 //   })
 // }
 
-// prom(1, 'Hello').then(result => console.log(result, 'Qoli'))
-// prom(2, 'Hi').then(result => console.log(result, 'Ali'))
-// prom(3, 'Hey').then(result => console.log(result, 'Hasan'))
-
-// const prom2 = new Promise(resolve => {
-//   setTimeout(() => resolve(), 2000)
-// })
-
-// prom2.then(() => console.log('salam'))
-// prom2.then(() => console.log('ali'))
-
-// function slider (slides) {
-//   if (!Array.isArray(slides)) {
-//     const error = new Error('Slides must be an array')
-
-//     // console.log(error.name)
-//     // console.log(error.message)
-//     // console.log(error.stack)
-//     throw error
-//   }
-
-//   console.log('Start sliding')
-//   // ....
+// async function func () {
+//   console.log(1)
+//   await delay(2)
+//   console.log(2)
 // }
 
-// const prom1 = new Promise((resolve, reject) => {
-//   reject()
-//   setTimeout(() => resolve('Salam'), 1000)
-// })
+// func()
 
-// prom1.then(() => {}).catch(() => {})
+// async function func () {
+//   console.log('a')
+//   const data = await delay(1, 'Ali')
+//   console.log(data)
+//   console.log('b')
+//   const data2 = await delay(2, 'Eli')
+//   console.log(data2)
+//   console.log('c')
+// }
 
-// console.log(1)
+// async function func2 () {
+//   console.log(1)
+//   await func()
+//   console.log(2)
+// }
 
-// setTimeout(() => {
-//   console.log(2 * 3)
-// }, 0)
+// func2()
 
-// const prom = new Promise(resolve => {
-//   resolve(2 * 4)
-// })
-
-// prom.then(result => console.log(result))
-
-// console.log(2)
-
-// const promAfter2 = new Promise(resolve => {
-//   setTimeout(() => {
-//     resolve()
-//   }, 2000)
-// })
-
-// console.log(1)
-// promAfter2.then(() => console.log('salam'))
-// console.log(2)
-// promAfter2.then(() => console.log('ali'))
-// console.log(3)
-
-// const prom = new Promise((resolve, reject) => {
-//   console.log('salam')
-//   setTimeout(() => {
-//     // resolve()
-//     reject()
-//   }, 2000)
-// })
-
-// prom
-//   .then(() => {
-//     console.log('Then')
+// function prom () {
+//   return new Promise(resolve => {
+//     resolve('Ali')
 //   })
-//   .catch(() => {
-//     console.log('Catch')
-//   })
+// }
+
+// async function prom () {
+//   // throw 'Error'
+//   return 'Ali'
+// }
+
+// prom()
+//   .then(data => console.log(data))
+//   .catch(console.log)
