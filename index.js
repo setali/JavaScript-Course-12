@@ -1,114 +1,77 @@
-const person = {
-  firstName: 'Ali'
-  // family: {
-  //   // father: {
-  //   //   // name: 'Mohammad'
-  //   // }
-  // }
-  // getFullName () {
-  //   return 'Ali Mousavi'
-  // }
-}
-
-console.log(person.family?.father?.name) // Optional chaining
-
-console.log(person.getFullName?.())
-
-// console.log(NaN ?? 'salam') // Nullish
-
-// const data = {
-//   name: NaN
-// }
-
-// const firstName = data.name ?? 'Anonymous'
-
-// console.log(firstName)
-
-// function Person (name, family) {
-//   this.name = name
-//   this.family = family
-
-//   this.getFullName = () => `${this.name} ${this.family}`
-// }
-
-// class Person {
-//   country = 'Iran'
-
-//   constructor (name, family) {
-//     this.name = name
-//     this.family = family
-//   }
-
-//   getFullName = () => `${this.name} ${this.family}`
-// }
-
-// const ali = new Person('Ali', 'Mousavi')
-
-// console.log(ali)
-// console.log(ali.getFullName())
-
-// console.log(ali instanceof Person)
-
-// new Person()
-
-// class Person {}
-
-// async function request (url, options = {}) {
-//   const response = await fetch(url, options)
-//   return await response.json()
-// }
-
-// const url = 'https://jsonplaceholder.typicode.com/users/1'
-
-// request(url)
+// fetch('https://jsonplaceholder.typicode.com/users/1')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data)
+//     return 'ali'
+//   })
 //   .then(console.log)
-//   .catch(console.log)
+//   .catch(err => console.log(err))
 
-// function delay (time, value) {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve(value)
-//     }, time * 1000)
-//   })
+// class MyClass {
+//   static [Symbol.hasInstance] (instance) {
+//     if (Array.isArray(instance) || instance === 42) {
+//       return true
+//     }
+//   }
 // }
 
-// async function func () {
-//   console.log(1)
-//   await delay(2)
-//   console.log(2)
+// console.log([] instanceof MyClass)
+// console.log(42 instanceof MyClass)
+// console.log({} instanceof MyClass)
+
+// const person = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   age: 33,
+//   [Symbol.toPrimitive] (hint) {
+//     if (hint === 'number') {
+//       return this.age
+//     } else if (hint === 'string') {
+//       return `${this.name} ${this.family}`
+//     }
+
+//     return null
+//   }
 // }
 
-// func()
+// console.log(+person)
+// console.log(String(person))
 
-// async function func () {
-//   console.log('a')
-//   const data = await delay(1, 'Ali')
-//   console.log(data)
-//   console.log('b')
-//   const data2 = await delay(2, 'Eli')
-//   console.log(data2)
-//   console.log('c')
+// const sym1 = Symbol.for('age')
+
+// const sym2 = Symbol.for('age')
+
+// console.log(sym1)
+// console.log(sym2)
+
+// console.log(sym1 === sym2)
+
+// const sym = Symbol('age')
+
+// const person = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   [sym]: 33
 // }
 
-// async function func2 () {
-//   console.log(1)
-//   await func()
-//   console.log(2)
+// console.log(person)
+// // console.log(person['name'])
+// // console.log(person['family'])
+// // console.log(person['Symbol(age)'])
+// // console.log(person[sym])
+
+// for (let key in person) {
+//   console.log(key)
 // }
 
-// func2()
+// console.log(JSON.stringify(person))
 
-// function prom () {
-//   return new Promise(resolve => {
-//     resolve('Ali')
-//   })
-// }
+// const sym1 = Symbol('Sym1')
 
-// async function prom () {
-//   // throw 'Error'
-//   return 'Ali'
-// }
+// const sym2 = Symbol('Sym2')
 
-// prom()
-//   .then(data => console.log(data))
-//   .catch(console.log)
+// console.log(sym1)
+
+// console.log(sym2)
+
+// console.log(sym1 === sym2)
