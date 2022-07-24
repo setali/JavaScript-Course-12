@@ -1,5 +1,6 @@
 import renderTableHead from './tableHead'
 import User from '../entity/user'
+import '../assets/css/table.css'
 
 export default function renderTable (data) {
   const table = document.createElement('table')

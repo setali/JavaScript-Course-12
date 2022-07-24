@@ -1,3 +1,24 @@
+async function func () {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users/1')
+
+  const data = await response.json()
+
+  return data
+}
+
+func().then(data => console.log(data))
+
+function remove () {
+  console.log('ali')
+}
+
+const obj = {
+  name: 'Ali',
+  myMethod: remove
+}
+
+obj.myMethod()
+
 // fetch('https://jsonplaceholder.typicode.com/users/1')
 //   .then(response => response.json())
 //   .then(data => {
